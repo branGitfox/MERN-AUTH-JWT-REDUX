@@ -17,6 +17,8 @@ app.use(express.json())
         console.log(`http://localhost:${PORT}`);
     })
  }).catch(err => console.log(err.message))
+
+ app.use('/api', routes)
   
 
 
