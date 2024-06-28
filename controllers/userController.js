@@ -39,8 +39,13 @@ export const logOut = async (req, res) => {
     res.status(200).json({message:"logOut user"})
 }
 
-export const getUserProfil = async (req, res) => {
-    res.status(200).json({message:" user profil"})
+export const getUserProfil = (req, res) => {
+    try{
+        // console.log(req.user._id)
+        res.status(200).json(req.user)
+    }catch(err){
+        res.status(404).json({message:'no user data'})
+    }
 }
 
 export const updateUserProfil = async (req, res) => {
