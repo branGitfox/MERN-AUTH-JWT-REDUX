@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
 }, {TimeStamps:true})
 
 userSchema.pre('save', async function(next){
-    if(!this.isModified){
+    if(!this.isModified('password')){
         next()
     }else{
         const salt = await bcrypt.genSalt(10) 

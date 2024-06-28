@@ -49,5 +49,28 @@ export const getUserProfil = (req, res) => {
 }
 
 export const updateUserProfil = async (req, res) => {
-    res.status(200).json({message:"update user"})
+    try{
+        const user = await User.findById(req.user._id)
+        if(user){
+            user.name = req.body.name
+            user.email = req.body.email
+
+            if(req.body.password){
+                user.password = req.body.password
+            }
+
+            const updatedUser = await user.save()
+            
+                    res.status(200).json({
+                        _id:updatedUser._id,
+                        name:updatedUser.name,
+                        email:updatedUser.email
+                    })
+            
+        }
+       
+    }catch(err){
+        res.status(200).json({message:'cannot update user '})
+
+    }
 }
