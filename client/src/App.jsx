@@ -5,7 +5,6 @@ import UserList from './components/UserList'
 import NotFound from './components/NotFound'
 import UserProvider from './components/UserProvider'
 
-
 function App() {
   return (
     <>
