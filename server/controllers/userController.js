@@ -14,7 +14,7 @@ export const register = async (req, res) => {
             password
         })
             // generateToken(res, user._id)
-        res.status(200).json(user)
+        res.status(200).json({})
     }catch(err){
         res.status(500).json({message:err.message})
     }
