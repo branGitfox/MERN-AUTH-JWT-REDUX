@@ -23,6 +23,8 @@ app.use(express.json())
  }).catch(err => console.log(err.message))
 
  app.use('/api', routes)
-  
+  app.get('/', (req, res) => {
+    res.send('Hello server');
+  })
 
 

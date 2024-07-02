@@ -7,14 +7,17 @@ import NotFound from './NotFound'
 
 const Routers = () => {
     return (
-<BrowserRouter>
-        <Routes>
-           <Route index path='/' element={<Login/>}/>
-           <Route path='/sign' element={<Sign/>}/>
-           <Route path='/userList' element={<UserList/>}/>
-           <Route path='*' element={<NotFound/>} />
-       </Routes>
-</BrowserRouter>
+   <>
+    <BrowserRouter>
+            <Routes>
+            <Route index path='/' element={<Login/>}/>
+            <Route path='/sign' element={<Sign/>}/>
+            <Route path='/userList' element={<UserList/>}/>
+            <Route path='*' element={<NotFound/>} />
+        </Routes>
+    </BrowserRouter>
+   </>     
+
     );
 }
 

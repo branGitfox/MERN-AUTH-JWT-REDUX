@@ -1,15 +1,16 @@
 
-import { Component } from 'react'
+import { Component , Fragment} from 'react'
 import Routers from './components/Routers'
-import UserProvider from './components/UserProvider'
+import {UserProvider} from './components/UserProvider'
 class App extends Component{
-  render(){
+  render() {
     return (
-    <>
+    <Fragment>
       <UserProvider>
         <Routers/>
       </UserProvider>
-    </>
+      </Fragment>
+  
   )
   }
 

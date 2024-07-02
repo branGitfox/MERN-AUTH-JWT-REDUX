@@ -14,7 +14,7 @@ export const register = async (req, res) => {
             password
         })
             // generateToken(res, user._id)
-        res.status(200).json({})
+        res.status(200).json(user)
     }catch(err){
         res.status(500).json({message:err.message})
     }
@@ -26,13 +26,14 @@ export const authUser = async (req, res) => {
         const user = await User.findOne({email})
         if(user && await user.matchPassword(password)){
             generateToken(res, user._id)
-            res.status(200).json({message:"user logged"})
+            res.status(200).json(user)
         }else{
-            res.status(200).json({message:"Invalid email or password"})
+            res.status(404).json({message:"Invalid email or password"})
 
         }
+
     }catch(err){
-        res.status(500).json({message:err.message})
+        res.status(404).json({message:err.message})
     }
 }
 export const logOut = async (req, res) => {

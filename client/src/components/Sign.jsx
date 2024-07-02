@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext , useState} from 'react';
 import { Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,19 +6,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserContext from './UserProvider'
 import axios from 'axios'
 const Sign = () => {
-    const {setCurrentUser} = useContext(UserContext)
+    const {userData, setCurrentUser} = useContext(UserContext)
     const [input, setInput] = useState({})
     const handleChange = (e) => {
         const {name, value} = e.target
         setInput(input => ({...input, [name]:value}))
         
     }
+    console.log(input);
     const Navigate = useNavigate()
     const handleSubmit =async (e) => {
         e.preventDefault()
         await axios.post('http://localhost:8000/api/auth', input).then(res => {
-            setCurrentUser(res.data)
-            Navigate('/userList')
+            toast.warning(res.data.message)
+            console.log(res.data);
         }).catch(err => toast.error(err.message))
     }
 
